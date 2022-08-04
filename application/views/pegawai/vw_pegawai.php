@@ -5,6 +5,7 @@
         <div class="row">
             <div class="col-md-6"><a href="<?= base_url('Pegawai/Tambah') ?>" class="btn btn-info mb-2">Tambah Pegawai</a></div>
             <div class="col-md-12">
+            <?= $this->session->flashdata('message'); ?>
                 <table class="table">
                     <thead>
                         <tr>

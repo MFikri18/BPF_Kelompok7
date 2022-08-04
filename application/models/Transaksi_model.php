@@ -17,10 +17,12 @@ class Transaksi_model extends CI_Model
     }
     public function getById($id)
     {
-        $this->db->select('t.*,b.nama_barang as barang');
+        $this->db->select('t.*,b.nama_barang as barang, p.nama_pegawai as pegawai, s.nama_supplier as supplier');
         $this->db->from('transaksi t');
         $this->db->join('barang b', 't.barang = b.id_barang');
-        $this->db->where('t.barang', $id);
+        $this->db->join('supplier s', 't.supplier = s.id_supplier');
+        $this->db->join('pegawai p','t.pegawai = p.id_pegawai');
+        $this->db->where('t.barang, t.supplier, t.pegawai', $id);
         $query = $this->db->get();
         return $query->row_array();
     }
